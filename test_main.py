@@ -10,7 +10,7 @@ async def test_get_wallet_not_found():
     async with httpx.AsyncClient(transport=transport, base_url="http://test") as client:
         response = await client.get("/api/v1/wallets/00000000-0000-0000-0000-000000000000")
         assert response.status_code == 404
-        assert response.json()== {"detail": "Wallet not found"}
+        assert response.json() == {"detail": "Wallet not found"}
 
 @pytest.mark.asyncio
 async def test_concurrent_withdrawals():

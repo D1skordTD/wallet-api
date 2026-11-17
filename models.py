@@ -10,3 +10,4 @@ class Wallet(Base):
 
     id = Column(PG_UUID(as_uuid=True), primary_key=True)
     balance = Column(Numeric(18, 2), nullable=False, default=0)
+    

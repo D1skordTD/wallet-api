@@ -10,13 +10,14 @@ from models import Wallet
 
 app = FastAPI()
 
+
 class OperationRequest(BaseModel):
     operation_type: Literal["DEPOSIT", "WITHDRAW"]
     amount: Decimal
 
 
 @app.get("/api/v1/wallets/{wallet_id}")
-async def get_wallet(wallet_id: UUID, db: AsyncSession = Depends(get_db)):    
+async def get_wallet(wallet_id: UUID, db: AsyncSession = Depends(get_db)):
     wallet = await db.get(Wallet, wallet_id)
     if wallet is None:
         raise HTTPException(status_code=404, detail="Wallet not found")
